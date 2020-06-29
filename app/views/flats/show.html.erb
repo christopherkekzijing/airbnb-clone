@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <h1><%= @flat.name %></h1>
+  <p><%= @flat.address %></p>
+</div>
+
+<div class="container">
+
+  <div id='flat-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+    <% if user_signed_in? == false || current_user.id != @flat.user_id  %>
+       <%= simple_form_for([@flat, @booking]) do |f| %>
+           <%= f.input :start_date, as: :string, type: :text %>
+           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

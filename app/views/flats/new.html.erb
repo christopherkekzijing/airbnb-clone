@@ -1,0 +1,15 @@
+<div class="container mt-5 col-lg-4 col-md-8 col-sm-12">
+  <h1>Host your house</h1>
+    <%= simple_form_for [@flat] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :description %>
+      <%= f.input :number_of_guest, collection: 1..10 %>
+      <%= f.input :number_of_bedroom, collection: 1..6 %>
+      <%= f.input :number_of_bathroom, collection: 1..6 %>
+      <%= f.input :price_per_night, numericality: {only_integer: true}%>
+      <%= f.input :photos, as: :file, input_html: {multiple: true} %>
+      <%= f.submit class: "btn btn-primary"%>
+
+    <% end %>
+</div>
