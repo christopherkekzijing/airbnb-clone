@@ -14,5 +14,10 @@ class PagesController < ApplicationController
 
   def bookings
     @user = User.find(current_user.id)
+    @bookings = Booking.where(user_id: @user)
+  end
+
+  def my_listing
+
   end
 end

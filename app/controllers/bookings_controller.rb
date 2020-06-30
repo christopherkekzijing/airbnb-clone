@@ -9,8 +9,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.flat_id = @flat.id
     @booking.user_id = current_user.id
+    @booking.total_price = (@booking.end_date - @booking.start_date) * @flat.price_per_night
     if @booking.save
-      redirect_to root_path
+      redirect_to account_bookings_path
     else
       render "flats/show"
     end

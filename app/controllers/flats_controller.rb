@@ -9,6 +9,7 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @booking = Booking.new
+    @price_per_night = @flat.price_per_night
     # @booking.user_id = current_user.id
     # @booking.flat_id = @flat
   end
@@ -29,6 +30,9 @@ class FlatsController < ApplicationController
 
   def edit
     @flat = Flat.find(params[:id])
+    if @flat.user != current_user
+      redirect_to root_path
+    end
   end
 
 
